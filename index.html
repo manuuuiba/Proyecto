@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManuToys - Coleccionables Die-Cast</title>
+    <meta name="theme-color" content="#FF4D00">
+    <meta name="description" content="ManuToys - Tu tienda especializada en coleccionables Die-Cast">
+    
+    <!-- Bootstrap CSS - CORREGIDO INTEGRITY --><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    
+    <!-- Tu CSS personalizado --><link rel="stylesheet" href="resources/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <!-- Header y Navbar --><header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <!-- LOGO - CORREGIDO (añadido texto) --><a class="navbar-brand" href="index.html">
+                    <img src="resources/images/ManuToysLogo.PNG" alt="Logo ManuToys" class="navbar-logo">
+                    ManuToys
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productos.html">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="acerca.html">Acerca de</a>
+                        </li>
+                        <!-- Botón del carrito de compras --><li class="nav-item ms-2">
+                            <button id="openCartBtn" class="btn btn-outline-light position-relative" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Abrir carrito">
+                                <i class="bi bi-cart3"></i>
+                                <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal --><main>
+        <!-- 1. Sección Hero/Banner (Carrusel adaptado a Die-Cast) --><section id="hero-carousel" class="mb-4">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <!-- Slide 1 --><div class="carousel-item active">
+                        <div class="carousel-image-container">
+                            <img src="resources/images/carousel-hotwheels.jpg" class="d-block w-100" alt="Banner Hot Wheels">
+                        </div>
+                        <div class="carousel-caption d-md-block"> <!-- Quitado d-none para mostrar en móvil -->
+                            <h5>¡Llegaron los Nuevos Hot Wheels!</h5>
+                            <p>Descubre los últimos modelos Premium y RLC.</p>
+                            <a href="productos.html" class="btn btn-primary">Ver Colección</a>
+                        </div>
+                    </div>
+                    <!-- Slide 2 --><div class="carousel-item">
+                        <img src="resources/images/carousel-minigt.jpg" class="d-block w-100" alt="Banner Mini GT">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Mini GT - Detalle Extremo</h5>
+                            <p>Realismo y precisión en escala 1:64.</p>
+                            <a href="productos.html" class="btn btn-primary">Descubrir</a>
+                        </div>
+                    </div>
+                    <!-- Slide 3 --><div class="carousel-item">
+                        <img src="resources/images/carousel-greenlight.jpg" class="d-block w-100" alt="Banner Greenlight">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Greenlight Collectibles</h5>
+                            <p>Ediciones especiales y Chase cars "Green Machines".</p>
+                            <a href="productos.html" class="btn btn-primary">Aprovechar</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+        
+        <div class="container">
+            <!-- 2. Sección Características/Beneficios (Adaptada a Die-Cast) --><section id="caracteristicas" class="my-5">
+                <h2 class="text-center mb-4">Por qué elegir ManuToys</h2>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <h3>Modelos Raros 💎</h3>
+                        <p>Encuentra piezas únicas, RLC y Super Treasure Hunts.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Calidad Premium 🏁</h3>
+                        <p>Acabados de metal/metal y llantas de goma.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Escala Perfecta 📏</h3>
+                        <p>Los mejores modelos de colección en escala 1:64.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Sección CTA (Llamado a la Acción) - MODAL DE REGISTRO --><section id="cta" class="text-center p-5 text-white rounded-3">
+                <h2>¿Listo para tu próxima cacería?</h2>
+                <p>Regístrate y entérate de los nuevos lanzamientos.</p>
+                <!-- Botón que activa el modal --><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registroModal">
+                    ¡Quiero registrarme!
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal de Registro (REQUISITOS: Formulario y Modal) --><div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registroModalLabel">Registro de Coleccionista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- 4. Formulario simple (Requerido en Landing) --><form>
+                        <div class="mb-3">
+                            <label for="modalNombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="modalNombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalEmail" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="modalEmail" placeholder="tu.correo@ejemplo.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalMarca" class="form-label">¿Qué marca coleccionas?</label>
+                            <select class="form-select" id="modalMarca">
+                                <option selected>Todas</option>
+                                <option value="1">Hot Wheels</option>
+                                <option value="2">Mini GT</option>
+                                <option value="3">Greenlight</option>
+                                <option value="4">Otras</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Registrarme</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Carrito -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Carrito de compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItemsContainer"></div>
+                <div id="cartEmpty" class="text-center text-muted">El carrito está vacío.</div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <div>
+                    <button id="clearCartBtn" class="btn btn-link text-danger">Vaciar carrito</button>
+                </div>
+                <div>
+                    <strong id="cartTotal">$0.00</strong>
+                    <button id="checkoutBtn" class="btn btn-primary ms-2">Proceder a pagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Pie de Página --><footer class="bg-dark text-white text-center p-4 mt-5">
+        <div class="container">
+            <p>&copy; 2025 ManuToys Die-Cast. Todos los derechos reservados.</p>
+            <!-- AÑADIDO: Iconos de Redes Sociales -->
+            <div class="mt-2">
+                <a href="https://instagram.com/manu._.toys" target="_blank" class="text-white me-3 fs-4" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://facebook.com/manutoys" target="_blank" class="text-white me-3 fs-4" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://wa.me/525512345678" target="_blank" class="text-white fs-4" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS - CORREGIDO INTEGRITY --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!-- Añade esta línea antes de cerrar el body en cada página -->
+<script src="resources/js/logic.js"></script>
+</body>
+</html>

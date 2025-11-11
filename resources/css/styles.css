@@ -1,0 +1,286 @@
+/* Paleta vibrante actualizada */
+:root {
+    --primary: #FF4D00;
+    --primary-dark: #CC3D00;
+    --secondary: #2C3E50;
+    --accent: #FFC107;
+    --light: #F8F9FA;
+    --dark: #1A1A1A;
+    --gradient-primary: linear-gradient(135deg, var(--primary) 0%, #FF8A00 100%);
+    --gradient-dark: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    --radius: 12px;
+}
+
+/* Fuentes (Ej. Inter de Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    background-color: var(--light);
+}
+
+/* 1. Navbar y Footer (Tema Vibrante) */
+.navbar {
+    background: var(--gradient-dark);
+    padding: 1rem 0;
+    box-shadow: var(--shadow-md);
+}
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.navbar-brand img {
+    max-height: 40px;
+    transition: transform 0.3s ease;
+}
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+.navbar-logo {
+    height: 40px;
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+.navbar .nav-link {
+    color: rgba(255,255,255,0.9);
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+    color: var(--primary);
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--primary);
+    transition: all 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Botón primario personalizado */
+.btn-primary {
+    background: var(--primary);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Tarjetas de Producto Interactivas */
+.card {
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.card-img-top {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    object-position: center;
+    background: #f5f5f6;
+    transition: transform 0.25s ease;
+}
+
+/* Legibilidad del Carrusel */
+.carousel-item img {
+    height: 600px;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.8);
+}
+.carousel-caption {
+    background: rgba(0,0,0,0.7);
+    border-radius: var(--radius);
+    padding: 2rem;
+    max-width: 500px;
+    text-align: left;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2rem;
+}
+.carousel-caption h5 { color: #fff; font-weight:700; }
+.carousel-caption p { color: #fff; opacity: .92; }
+
+/* Estilos para sección características */
+#caracteristicas {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-radius: var(--radius);
+}
+#caracteristicas h3 {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+#caracteristicas .col-md-4 {
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+#caracteristicas .col-md-4:hover {
+    transform: translateY(-5px);
+}
+
+/* CTA más fuerte y vibrante */
+#cta {
+    background: var(--gradient-primary);
+    border-radius: var(--radius);
+    padding: 4rem 2rem;
+    margin: 4rem 0;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: var(--radius);
+    border: none;
+}
+
+.modal-header {
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Footer */
+footer {
+    background: var(--gradient-dark);
+    padding: 3rem 0;
+}
+
+footer a {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--primary);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Ajuste para la navbar fija */
+main {
+    padding-top: 76px;
+}
+
+/* Detalles menores */
+h1,h2,h3 { color: #111; }
+p.lead { color: #333; }
+
+/* Estilos para Acerca de */
+.hero-section {
+    background: linear-gradient(135deg, rgba(255,77,0,0.95), rgba(255,193,7,0.9));
+    padding: 3rem;
+    border-radius: 14px;
+    color: #111;
+    overflow: hidden;
+}
+.hero-image { height: 320px; border-radius: 12px; overflow: hidden; }
+.hero-image img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter: contrast(0.98); }
+
+.feature-card {
+    background: linear-gradient(180deg,#fff,#fbfbfb);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(16,24,40,0.06);
+    transition: transform .28s ease, box-shadow .28s ease;
+}
+.feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(16,24,40,0.09); }
+
+.timeline li { padding: .45rem 0; color: #444; }
+.team-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(11,11,13,0.06);
+    transition: transform .28s ease;
+}
+.team-card img { width:100%; height:160px; object-fit:cover; display:block; }
+.team-card:hover { transform: translateY(-6px); }
+
+#cta {
+    background: linear-gradient(90deg, rgba(255,87,34,0.95), rgba(255,193,7,0.95));
+    color: #111;
+    margin-top: 2.5rem;
+    box-shadow: 0 18px 40px rgba(255,87,34,0.12);
+}
+#cta .form-control { max-width: 420px; border-radius: 60px; }
+#cta .btn-dark { border-radius: 60px; background: #0b0b0d; border: none; color: var(--accent); padding: .75rem 1.8rem; }
+
+@media (max-width: 767px) {
+    .hero-image { height: 220px; margin-top: 1rem; }
+    .team-card img { height: 120px; }
+    .feature-card { padding: 1.5rem; }
+}
+
+/* Estilos para el carrito */
+.cart-item-image {
+    width: 56px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-quantity-input {
+    width: 110px;
+}
+
+.cart-item {
+    border-radius: var(--radius);
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.cart-item:hover {
+    background-color: var(--light);
+}
+
+.btn-cart {
+    transition: all 0.3s ease;
+}
+
+.btn-cart:hover {
+    transform: translateY(-2px);
+}
+
+.cart-empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--secondary);
+}
