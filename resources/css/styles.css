@@ -15,7 +15,7 @@
 }
 
 /* Fuentes (Ej. Inter de Google Fonts) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display?swap');
 
 body {
     font-family: 'Inter', sans-serif;
@@ -102,14 +102,46 @@ body {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
-.card-img-top {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    object-position: center;
-    background: #f5f5f6;
-    transition: transform 0.25s ease;
+
+/* Estilos de la tarjeta de producto en productos.html */
+.product-card {
+    background: #ffffff;
+    border: 1px solid #eee;
 }
+
+.product-card .card-img-top {
+    /* CORRECCIÓN: Estilos para uniformar las imágenes de los productos */
+    width: 90%;
+    
+    /* CORRECCIÓN: Altura reducida a 180px para mejor ajuste a imágenes anchas */
+    height: 300px; 
+    
+    /* CORRECCIÓN: 'cover' llenará el espacio (sin marcos). */
+    object-fit: cover; 
+    
+    object-position: center; /* Centra la imagen */
+    
+    /* El fondo no se verá, pero se define por si acaso */
+    background-color: #f5f5f6; 
+    
+    /* Sin padding */
+    padding: 0; 
+    
+    /* Borde sutil */
+    border-bottom: 1px solid #eee; 
+    
+    transition: transform 0.3s ease;
+}
+.product-card:hover .card-img-top {
+    transform: scale(1.03);
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
 
 /* Legibilidad del Carrusel */
 .carousel-item img {
@@ -185,6 +217,16 @@ footer a:hover {
     color: var(--primary);
 }
 
+/* CORRECCIÓN: Añadido logo del footer */
+.footer-logo {
+    max-height: 50px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.footer-logo:hover {
+    opacity: 1;
+}
+
 /* Animaciones */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -247,6 +289,16 @@ p.lead { color: #333; }
     .hero-image { height: 220px; margin-top: 1rem; }
     .team-card img { height: 120px; }
     .feature-card { padding: 1.5rem; }
+    
+    /* Carrusel responsivo */
+    .carousel-item img {
+        height: 70vh; /* 70% de la altura de la pantalla */
+        min-height: 400px;
+    }
+    .carousel-caption {
+        padding: 1.5rem;
+        bottom: 1rem;
+    }
 }
 
 /* Estilos para el carrito */
@@ -283,4 +335,9 @@ p.lead { color: #333; }
     padding: 2rem;
     text-align: center;
     color: var(--secondary);
+}
+
+/* Contenedor de Toasts */
+#toastContainer {
+    z-index: 1100; /* Asegura que esté sobre los modales (1050) */
 }
