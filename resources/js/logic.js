@@ -3,12 +3,13 @@
     const STORAGE_KEY = 'manutoys_cart';
 
     // Base de datos de productos (reemplaza el contenido estático de productos.html)
+    // ¡NUEVO! Descripciones actualizadas para ser más creativas y "bonitas"
     const allProducts = [
         {
             id: 'hw-porsche-911',
             name: 'Porsche 911 GT3',
             brand: 'hotwheels',
-            description: 'Edición premium: chasis metálico, llantas de goma y detalles realistas.',
+            description: 'La leyenda de Stuttgart con llantas de goma y acabados que cortan el viento. Una joya de metal/metal que no puede faltar en tu garaje.',
             price: 250.00,
             image: 'resources/images/hw-modal-1.jpg',
             stock: 'stock'
@@ -17,7 +18,7 @@
             id: 'hw-skyline',
             name: 'Nissan Skyline GT-R LBWK',
             brand: 'hotwheels',
-            description: 'Réplica con acabados especiales y pintura edición limitada.',
+            description: 'El "Godzilla" de Liberty Walk. Una bestia JDM con pintura "chase" y un widebody agresivo. Pura actitud japonesa.',
             price: 400.00,
             image: 'resources/images/hw-modal-2.jpg',
             stock: 'none'
@@ -26,7 +27,7 @@
             id: 'hw-aston-v8',
             name: 'Aston Martin V8',
             brand: 'hotwheels',
-            description: 'Detalle de faros y calcas, ideal para coleccionistas.',
+            description: 'Elegancia y poder británico. Este clásico de Aston Martin brilla con detalles finos, listo para un viaje de lujo por tu colección.',
             price: 190.00,
             image: 'resources/images/hw-modal-3.jpg',
             stock: 'stock'
@@ -35,7 +36,7 @@
             id: 'mgt-porsche-911',
             name: 'Porsche 911 GT3',
             brand: 'minigt',
-            description: 'Modelado con altos niveles de detalle y acabados realistas.',
+            description: 'El realismo de Mini GT en su máxima expresión. Espejos reales, llantas detalladas y la aerodinámica de un verdadero auto de carreras. Precisión de museo.',
             price: 300.00,
             image: 'resources/images/mgt-modal-1.jpg',
             stock: 'stock'
@@ -44,16 +45,16 @@
             id: 'mgt-rx7',
             name: 'Mazda RX-7 REAmemiya',
             brand: 'minigt',
-            description: 'Incluye espejos, alerón y detalles de carrocería fieles al original.',
+            description: 'El demonio del JDM. La icónica máquina de REAmemiya con cada detalle aerodinámico replicado a la perfección. Una leyenda de la cultura "tuning".',
             price: 280.00,
             image: 'resources/images/mgt-modal-3.jpg',
             stock: 'last'
         },
         {
             id: 'mgt-porsche-911-rexy',
-            name: 'Porsche 911 GT3 R',
+            name: 'Porsche 911 GT3 R "Rexy"',
             brand: 'minigt',
-            description: 'El iconico Porsche 911 GT3 R de imsa en 1/64.',
+            description: '¡El T-Rex de la pista! El diseño más salvaje y querido de IMSA llega a 1:64. Un ícono instantáneo que se robará todas las miradas.',
             price: 1200.00,
             image: 'resources/images/mgt-modal-4.jpg',
             stock: 'last'
@@ -62,7 +63,7 @@
             id: 'mgt-redbull-rb16b',
             name: 'Red Bull RB16B',
             brand: 'minigt',
-            description: 'Réplica oficial del monoplaza de Fórmula 1 de la temporada 2021.',
+            description: 'El auto campeón del mundo de F1 en tus manos. La aerodinámica y los colores mate del equipo Red Bull Racing, replicados con una precisión asombrosa.',
             price: 250.00,
             image: 'resources/images/mgt-modal-5.jpg',
             stock: 'none'
@@ -71,7 +72,7 @@
             id: 'mgt-mclaren-artura',
             name: 'McLaren Artura',
             brand: 'minigt',
-            description: 'Modelo detallado con acabados realistas.',
+            description: 'El futuro de los superdeportivos. El Artura híbrido de McLaren, capturado por Mini GT con líneas afiladas y un acabado impecable.',
             price: 250.00,
             image: 'resources/images/mgt-modal-6.jpg',
             stock: 'stock'
@@ -80,7 +81,7 @@
             id: 'mgt-zonda',
             name: 'Pagani Zonda F',
             brand: 'minigt',
-            description: 'Pintura y detalles de motor replicados con precisión.',
+            description: 'La obra de arte de Horacio Pagani. Cada curva de este Zonda F es una sinfonía de diseño italiano y poder. Una pieza central para cualquier colección.',
             price: 190.00,
             image: 'resources/images/mgt-modal-2.jpg',
             stock: 'none'
@@ -89,7 +90,7 @@
             id: 'gl-dodge-charger',
             name: 'Dodge Charger Guardia Nacional',
             brand: 'greenlight',
-            description: 'Edición temática con base y detalles de policía.',
+            description: '¡Autoridad en la carretera! Esta réplica de la Guardia Nacional de Greenlight captura la presencia imponente del Charger, lista para la acción.',
             price: 380.00,
             image: 'resources/images/gl-modal-1.jpg',
             stock: 'stock'
@@ -98,7 +99,7 @@
             id: 'gl-dallara',
             name: 'Dallara DW12 Honda',
             brand: 'greenlight',
-            description: 'Réplica de competición con decoración oficial.',
+            description: 'Velocidad pura de Indy. Siente la adrenalina de las 500 millas con esta réplica de competición, con todos los patrocinadores y detalles aerodinámicos.',
             price: 150.00,
             image: 'resources/images/gl-modal-2.jpg',
             stock: 'last'
@@ -107,7 +108,7 @@
             id: 'gl-silverado',
             name: 'Chevrolet Silverado',
             brand: 'greenlight',
-            description: 'Pickup con accesorios y pintura especial.',
+            description: 'Fuerza y deber. Esta Chevrolet Silverado de la Guardia Nacional por Greenlight es tan robusta como su contraparte real. Lista para cualquier terreno.',
             price: 400.00,
             image: 'resources/images/gl-modal-3.jpg',
             stock: 'none'
@@ -123,6 +124,46 @@
     }
 
     /**
+     * Obtiene el badge de stock.
+     * @param {string} stockStatus - 'stock', 'last', 'none'.
+     */
+    function getStockBadge(stockStatus) {
+        if (stockStatus === 'stock') {
+            return '<span class="badge bg-success">En stock</span>';
+        } else if (stockStatus === 'last') {
+            return '<span class="badge bg-warning text-dark">Últimas unidades</span>';
+        } else {
+            return '<span class="badge bg-danger">Agotado</span>';
+        }
+    }
+
+    /**
+     * Obtiene el botón de compra para la tarjeta de producto.
+     * @param {object} product - El objeto del producto.
+     */
+    function getProductButton(product) {
+        if (product.stock === 'stock' || product.stock === 'last') {
+            return `<button class="btn btn-primary add-to-cart" data-id="${product.id}">Comprar</button>`;
+        } else {
+            return `<button class="btn btn-secondary" disabled>Agotado</button>`;
+        }
+    }
+
+    /**
+     * Obtiene el botón de compra para el MODAL de detalle.
+     * @param {object} product - El objeto del producto.
+     */
+    function getModalButton(product) {
+        if (product.stock === 'stock' || product.stock === 'last') {
+            // Usamos un ID o clase diferente para el botón del modal si es necesario
+            return `<button class="btn btn-primary add-to-cart-modal" data-id="${product.id}">Añadir al carrito</button>`;
+        } else {
+            return `<button class="btn btn-secondary" disabled>Agotado</button>`;
+        }
+    }
+
+
+    /**
      * Renderiza los productos en la cuadrícula de productos.
      * @param {object} filters - Opciones de filtrado (searchTerm, brand, priceSort).
      */
@@ -131,8 +172,6 @@
         if (!grid) return; // Salir si no estamos en la página de productos
 
         const products = getProducts();
-        
-        // CORRECCIÓN: Añadido contenedor de mensaje "No resultados"
         const noResults = document.getElementById('noResultsMessage');
 
         let filtered = products;
@@ -162,7 +201,7 @@
 
         grid.innerHTML = ''; // Limpiar grid
 
-        // CORRECCIÓN: Mostrar u ocultar el mensaje de "No resultados"
+        // Mostrar u ocultar el mensaje de "No resultados"
         if (filtered.length === 0) {
             if(noResults) noResults.style.display = 'block';
         } else {
@@ -172,30 +211,18 @@
         // Renderizar productos filtrados
         filtered.forEach(product => {
             const col = document.createElement('div');
-            // CORRECCIÓN: Añadida clase fade-in-section para animación
-            col.className = 'col fade-in-section';
+            col.className = 'col fade-in-section'; // Añadida clase de animación
             
-            let stockBadge = '';
-            let buttonHtml = '';
+            const stockBadge = getStockBadge(product.stock);
+            const buttonHtml = getProductButton(product);
 
-            if (product.stock === 'stock') {
-                stockBadge = '<span class="badge bg-success">En stock</span>';
-                buttonHtml = `<button class="btn btn-primary add-to-cart" data-id="${product.id}">Comprar</button>`;
-            } else if (product.stock === 'last') {
-                stockBadge = '<span class="badge bg-warning text-dark">Últimas unidades</span>';
-                buttonHtml = `<button class="btn btn-primary add-to-cart" data-id="${product.id}">Comprar</button>`;
-            } else {
-                stockBadge = '<span class="badge bg-danger">Agotado</span>';
-                buttonHtml = `<button class="btn btn-secondary" disabled>Agotado</button>`;
-            }
-
-            // REVERSIÓN: Quitados los enlaces <a> de la imagen y el título
+            // ¡NUEVO! La imagen y el título ahora son clicables para abrir el modal
             col.innerHTML = `
                 <div class="card h-100 product-card">
-                    <img src="${product.image}" class="card-img-top" alt="${product.name}" loading="lazy">
+                    <img src="${product.image}" class="card-img-top product-detail-trigger" alt="${product.name}" loading="lazy" data-id="${product.id}" style="cursor: pointer;">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text small text-muted">${product.description}</p>
+                        <h5 class="card-title product-detail-trigger" data-id="${product.id}" style="cursor: pointer;">${product.name}</h5>
+                        <p class="card-text small text-muted">${product.description.substring(0, 80)}...</p> 
                         <div class="mt-auto">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <strong class="product-price">${formatCurrency(product.price)}</strong>
@@ -211,8 +238,8 @@
             grid.appendChild(col);
         });
 
-        // IMPORTANTE: Después de renderizar, inicializar los observers para las nuevas tarjetas
-        setupIntersectionObserver();
+        // IMPORTANTE: Observar los nuevos elementos para la animación de fade-in
+        observeFadeInElements();
     }
 
     /**
@@ -224,6 +251,7 @@
         const brandFilter = document.getElementById('brandFilter');
         const priceFilter = document.getElementById('priceFilter');
 
+        // Objeto para mantener el estado de los filtros
         const filters = {
             searchTerm: '',
             brand: '',
@@ -324,7 +352,6 @@
         updateCartCount();
         // Re-renderizar el carrito si el modal está abierto
         const cartModal = document.getElementById('cartModal');
-        // Comprobación de nulidad
         if (cartModal && cartModal.classList.contains('show')) {
             renderCart();
         }
@@ -525,23 +552,94 @@
     }
 
     // -----------------------------------------------------------------
-    // LÓGICA DE ANIMACIÓN (Intersection Observer)
+    // ¡NUEVO! LÓGICA PARA MODAL DE DETALLE DE PRODUCTO
     // -----------------------------------------------------------------
-    
-    function setupIntersectionObserver() {
+    /**
+     * Abre el modal de detalle del producto.
+     * @param {string} productId - El ID del producto.
+     */
+    function openProductDetailModal(productId) {
+        const product = getProducts().find(p => p.id === productId);
+        if (!product) return;
+
+        const modalTitle = document.getElementById('productDetailModalTitle');
+        const modalBody = document.getElementById('productDetailModalBody');
+        const modalFooter = document.getElementById('productDetailModalFooter');
+        
+        if (!modalTitle || !modalBody || !modalFooter) return;
+
+        modalTitle.textContent = product.name;
+
+        modalBody.innerHTML = `
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="${product.image}" class="img-fluid rounded product-detail-image" alt="${product.name}">
+                </div>
+                <div class="col-md-6">
+                    <p>${product.description}</p> 
+                    <h3 class="product-price">${formatCurrency(product.price)}</h3>
+                    <div class="stock-indicator mb-3">
+                        ${getStockBadge(product.stock)}
+                    </div>
+                    <p class="small text-muted">Marca: ${product.brand}</p>
+                </div>
+            </div>
+        `;
+
+        modalFooter.innerHTML = `
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            ${getModalButton(product)}
+        `;
+
+        // Añadir listener al botón de comprar del modal (si existe)
+        const modalBuyBtn = modalFooter.querySelector('.add-to-cart-modal');
+        if (modalBuyBtn) {
+            modalBuyBtn.addEventListener('click', function() {
+                addToCart(this.dataset.id);
+                // Opcional: Cerrar modal después de añadir
+                const modalInstance = bootstrap.Modal.getInstance(document.getElementById('productDetailModal'));
+                if (modalInstance) {
+                    modalInstance.hide();
+                }
+            });
+        }
+
+        const modal = new bootstrap.Modal(document.getElementById('productDetailModal'));
+        modal.show();
+    }
+
+
+    // -----------------------------------------------------------------
+    // ANIMACIONES DE SCROLL (Intersection Observer)
+    // -----------------------------------------------------------------
+
+    let observer;
+
+    /**
+     * Observa los elementos con la clase .fade-in-section para animarlos.
+     */
+    function observeFadeInElements() {
         const sections = document.querySelectorAll('.fade-in-section');
         
-        const observer = new IntersectionObserver((entries, observer) => {
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 10% del elemento visible
+        };
+
+        // Desconectar el observador anterior si existe, para evitar duplicados
+        if (observer) {
+            observer.disconnect();
+        }
+
+        observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Dejar de observar una vez animado
+                    obs.unobserve(entry.target); // Dejar de observar una vez animado
                 }
             });
-        }, {
-            root: null, // viewport
-            threshold: 0.1 // 10% del elemento visible
-        });
+        }, options);
 
         sections.forEach(section => {
             observer.observe(section);
@@ -562,12 +660,14 @@
             setupProductListeners();
         }
 
-        // Configurar el Intersection Observer para animaciones de scroll
-        setupIntersectionObserver();
+        // Iniciar observador de animaciones
+        observeFadeInElements();
 
-        // Botón añadir al carrito (listener global en el documento)
+        // --- Listeners de Clic Globales ---
         document.addEventListener('click', function (e) {
             const target = e.target;
+
+            // Botón añadir al carrito (desde la tarjeta)
             if (target.classList.contains('add-to-cart')) {
                 const id = target.dataset.id;
                 addToCart(id);
@@ -583,13 +683,19 @@
                     target.classList.add('btn-primary');
                 }, 1000);
             }
+
+            // ¡NUEVO! Clic en tarjeta de producto para abrir modal
+            if (target.classList.contains('product-detail-trigger')) {
+                const productId = target.dataset.id;
+                openProductDetailModal(productId);
+            }
         });
 
         // Botón vaciar carrito
         const clearCartBtn = document.getElementById('clearCartBtn');
         if (clearCartBtn) {
             clearCartBtn.addEventListener('click', () => {
-                // CORRECCIÓN: Reemplazado confirm() por un modal de Bootstrap
+                // Reemplazado confirm() por un modal de Bootstrap
                 const cart = getCart();
                 if (cart.length === 0) {
                     showToast('El carrito ya está vacío.', 'info');
@@ -604,20 +710,18 @@
             });
         }
 
-        // CORRECCIÓN: Añadido listener para el botón de confirmación en el nuevo modal
+        // Botón de confirmación en el modal "Vaciar Carrito"
         const confirmClearBtn = document.getElementById('confirmClearCartBtn');
         if (confirmClearBtn) {
             confirmClearBtn.addEventListener('click', () => {
                 saveCart([]); // Vaciar el carrito
                 
-                // Ocultar el modal de confirmación
                 const modalElement = document.getElementById('confirmClearCartModal');
                 const modalInstance = bootstrap.Modal.getInstance(modalElement);
                 if (modalInstance) {
                     modalInstance.hide();
                 }
 
-                // Opcional: Mostrar un toast de éxito
                 showToast('El carrito se ha vaciado.', 'info');
             });
         }
@@ -631,9 +735,7 @@
                     showToast('El carrito está vacío.');
                     return;
                 }
-                // CORRECCIÓN: Reemplazado enlace roto por un toast
                 showToast('¡Proceso de pago aún no implementado!', 'info');
-                // window.location.href = 'checkout.html'; // Descomentar cuando exista
             });
         }
 
