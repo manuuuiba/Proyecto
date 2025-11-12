@@ -8,9 +8,12 @@
     --dark: #1A1A1A;
     --gradient-primary: linear-gradient(135deg, var(--primary) 0%, #FF8A00 100%);
     --gradient-dark: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    
+    /* CORRECCIÓN: Sombras más suaves y modernas */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05); /* Más suave */
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08); /* Más difuminada */
+    
     --radius: 12px;
 }
 
@@ -84,14 +87,16 @@ body {
 .btn-primary:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    
+    /* CORRECCIÓN: Resplandor estético en hover */
+    box-shadow: 0 4px 10px rgba(255, 77, 0, 0.3);
 }
 
 /* Tarjetas de Producto Interactivas */
 .card {
     border: none;
     border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md); /* Usando la nueva sombra suave */
     transition: all 0.3s ease;
     overflow: hidden;
     height: 100%;
@@ -100,35 +105,26 @@ body {
 }
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg); /* Usando la nueva sombra suave */
 }
 
 /* Estilos de la tarjeta de producto en productos.html */
 .product-card {
     background: #ffffff;
-    border: 1px solid #eee;
+    /* CORRECCIÓN: Eliminado el borde para un look más limpio */
+    /* border: 1px solid #eee; */
 }
 
 .product-card .card-img-top {
-    /* CORRECCIÓN: Estilos para uniformar las imágenes de los productos */
-    width: 90%;
-    
-    /* CORRECCIÓN: Altura reducida a 180px para mejor ajuste a imágenes anchas */
-    height: 300px; 
-    
-    /* CORRECCIÓN: 'cover' llenará el espacio (sin marcos). */
+    width: 100%;
+    height: 315px; 
     object-fit: cover; 
-    
-    object-position: center; /* Centra la imagen */
-    
-    /* El fondo no se verá, pero se define por si acaso */
+    object-position: center;
     background-color: #f5f5f6; 
-    
-    /* Sin padding */
     padding: 0; 
     
-    /* Borde sutil */
-    border-bottom: 1px solid #eee; 
+    /* CORRECCIÓN: Eliminado el borde inferior */
+    /* border-bottom: 1px solid #eee; */
     
     transition: transform 0.3s ease;
 }
@@ -136,8 +132,23 @@ body {
     transform: scale(1.03);
 }
 
+/* CORRECCIÓN: Ajuste de padding en el cuerpo de la tarjeta */
+.product-card .card-body {
+    padding: 1.5rem;
+}
+/* CORRECCIÓN: Ajuste de tipografía en la tarjeta */
+.product-card .card-title {
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.75rem;
+}
+.product-card .card-text {
+    color: #555; /* Un gris un poco más claro */
+}
+
 .product-price {
-    font-size: 1.25rem;
+    /* CORRECCIÓN: Precio ligeramente más grande */
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--primary);
 }
@@ -188,6 +199,9 @@ body {
     border-radius: var(--radius);
     padding: 4rem 2rem;
     margin: 4rem 0;
+    /* CORRECCIÓN: Animación de fondo */
+    background-size: 200% 200%;
+    animation: gradient-shift 10s ease infinite;
 }
 
 /* Modal Styling */
@@ -227,15 +241,30 @@ footer a:hover {
     opacity: 1;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ---------------------------------- */
+/* -- ANIMACIONES ------------------- */
+/* ---------------------------------- */
+
+/* Keyframes para la animación de fondo en CTA */
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-.animate-in {
-    animation: fadeIn 0.6s ease forwards;
+/* Animación de entrada (Fade In) */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
+/* Clase que se añade con JS cuando el elemento es visible */
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* Ajuste para la navbar fija */
 main {
@@ -253,6 +282,9 @@ p.lead { color: #333; }
     border-radius: 14px;
     color: #111;
     overflow: hidden;
+    /* CORRECCIÓN: Animación de fondo */
+    background-size: 200% 200%;
+    animation: gradient-shift 10s ease infinite;
 }
 .hero-image { height: 320px; border-radius: 12px; overflow: hidden; }
 .hero-image img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; filter: contrast(0.98); }
@@ -276,14 +308,18 @@ p.lead { color: #333; }
 .team-card img { width:100%; height:160px; object-fit:cover; display:block; }
 .team-card:hover { transform: translateY(-6px); }
 
-#cta {
+#cta-acerca {
+    /* Mismos estilos que #cta, pero podemos sobreescribir si es necesario */
     background: linear-gradient(90deg, rgba(255,87,34,0.95), rgba(255,193,7,0.95));
     color: #111;
     margin-top: 2.5rem;
     box-shadow: 0 18px 40px rgba(255,87,34,0.12);
+    /* CORRECCIÓN: Animación de fondo */
+    background-size: 200% 200%;
+    animation: gradient-shift 10s ease infinite;
 }
-#cta .form-control { max-width: 420px; border-radius: 60px; }
-#cta .btn-dark { border-radius: 60px; background: #0b0b0d; border: none; color: var(--accent); padding: .75rem 1.8rem; }
+#cta-acerca .form-control { max-width: 420px; border-radius: 60px; }
+#cta-acerca .btn-dark { border-radius: 60px; background: #0b0b0d; border: none; color: var(--accent); padding: .75rem 1.8rem; }
 
 @media (max-width: 767px) {
     .hero-image { height: 220px; margin-top: 1rem; }

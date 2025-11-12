@@ -172,7 +172,8 @@
         // Renderizar productos filtrados
         filtered.forEach(product => {
             const col = document.createElement('div');
-            col.className = 'col';
+            // CORRECCIÓN: Añadida clase fade-in-section para animación
+            col.className = 'col fade-in-section';
             
             let stockBadge = '';
             let buttonHtml = '';
@@ -209,6 +210,9 @@
             `;
             grid.appendChild(col);
         });
+
+        // IMPORTANTE: Después de renderizar, inicializar los observers para las nuevas tarjetas
+        setupIntersectionObserver();
     }
 
     /**
@@ -320,7 +324,8 @@
         updateCartCount();
         // Re-renderizar el carrito si el modal está abierto
         const cartModal = document.getElementById('cartModal');
-        if (cartModal.classList.contains('show')) {
+        // Comprobación de nulidad
+        if (cartModal && cartModal.classList.contains('show')) {
             renderCart();
         }
     }
@@ -519,6 +524,30 @@
         });
     }
 
+    // -----------------------------------------------------------------
+    // LÓGICA DE ANIMACIÓN (Intersection Observer)
+    // -----------------------------------------------------------------
+    
+    function setupIntersectionObserver() {
+        const sections = document.querySelectorAll('.fade-in-section');
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Dejar de observar una vez animado
+                }
+            });
+        }, {
+            root: null, // viewport
+            threshold: 0.1 // 10% del elemento visible
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    }
+
 
     // -----------------------------------------------------------------
     // EVENT LISTENERS GLOBALES
@@ -533,8 +562,8 @@
             setupProductListeners();
         }
 
-        // REVERSIÓN: Quitada la lógica de la página de detalle
-        // if (document.getElementById('productDetailContainer')) { ... }
+        // Configurar el Intersection Observer para animaciones de scroll
+        setupIntersectionObserver();
 
         // Botón añadir al carrito (listener global en el documento)
         document.addEventListener('click', function (e) {
