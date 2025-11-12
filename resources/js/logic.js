@@ -2,8 +2,9 @@
 (function () {
     const STORAGE_KEY = 'manutoys_cart';
 
-    // Base de datos de productos (reemplaza el contenido estático de productos.html)
-    // ¡NUEVO! Descripciones actualizadas para ser más creativas y "bonitas"
+    // Base de datos de productos
+    // ¡NUEVO! 'image' se convierte en 'images' (un array) para la galería.
+    // Usamos imágenes existentes para simular la galería.
     const allProducts = [
         {
             id: 'hw-porsche-911',
@@ -11,7 +12,10 @@
             brand: 'hotwheels',
             description: 'La leyenda de Stuttgart con llantas de goma y acabados que cortan el viento. Una joya de metal/metal que no puede faltar en tu garaje.',
             price: 250.00,
-            image: 'resources/images/hw-modal-1.jpg',
+            images: [
+                'resources/images/hw-modal-1.jpg', 
+          
+            ],
             stock: 'stock'
         },
         {
@@ -20,7 +24,10 @@
             brand: 'hotwheels',
             description: 'El "Godzilla" de Liberty Walk. Una bestia JDM con pintura "chase" y un widebody agresivo. Pura actitud japonesa.',
             price: 400.00,
-            image: 'resources/images/hw-modal-2.jpg',
+            images: [
+                'resources/images/hw-modal-2.jpg',
+       
+            ],
             stock: 'none'
         },
         {
@@ -29,7 +36,7 @@
             brand: 'hotwheels',
             description: 'Elegancia y poder británico. Este clásico de Aston Martin brilla con detalles finos, listo para un viaje de lujo por tu colección.',
             price: 190.00,
-            image: 'resources/images/hw-modal-3.jpg',
+            images: ['resources/images/hw-modal-3.jpg'], // Simulada
             stock: 'stock'
         },
         {
@@ -38,7 +45,7 @@
             brand: 'minigt',
             description: 'El realismo de Mini GT en su máxima expresión. Espejos reales, llantas detalladas y la aerodinámica de un verdadero auto de carreras. Precisión de museo.',
             price: 300.00,
-            image: 'resources/images/mgt-modal-1.jpg',
+            images: ['resources/images/mgt-modal-1.jpg', 'resources/images/mgt-modal-1-2.jpg', 'resources/images/mgt-modal-1-3.jpg'], // Simulada
             stock: 'stock'
         },
         {
@@ -47,7 +54,7 @@
             brand: 'minigt',
             description: 'El demonio del JDM. La icónica máquina de REAmemiya con cada detalle aerodinámico replicado a la perfección. Una leyenda de la cultura "tuning".',
             price: 280.00,
-            image: 'resources/images/mgt-modal-3.jpg',
+            images: ['resources/images/mgt-modal-3.jpg', 'resources/images/mgt-modal-3-2.jpg', 'resources/images/mgt-modal-3-3.jpg'], // Simulada
             stock: 'last'
         },
         {
@@ -56,7 +63,7 @@
             brand: 'minigt',
             description: '¡El T-Rex de la pista! El diseño más salvaje y querido de IMSA llega a 1:64. Un ícono instantáneo que se robará todas las miradas.',
             price: 1200.00,
-            image: 'resources/images/mgt-modal-4.jpg',
+            images: ['resources/images/mgt-modal-4.jpg', 'resources/images/mgt-modal-4-2.jpg', 'resources/images/mgt-modal-4-3.jpg'], // Simulada
             stock: 'last'
         },
         {
@@ -65,7 +72,7 @@
             brand: 'minigt',
             description: 'El auto campeón del mundo de F1 en tus manos. La aerodinámica y los colores mate del equipo Red Bull Racing, replicados con una precisión asombrosa.',
             price: 250.00,
-            image: 'resources/images/mgt-modal-5.jpg',
+            images: ['resources/images/mgt-modal-5.jpg', 'resources/images/mgt-modal-5-2.jpg', 'resources/images/mgt-modal-5-3.jpg'], // Simulada
             stock: 'none'
         },
         {
@@ -74,7 +81,7 @@
             brand: 'minigt',
             description: 'El futuro de los superdeportivos. El Artura híbrido de McLaren, capturado por Mini GT con líneas afiladas y un acabado impecable.',
             price: 250.00,
-            image: 'resources/images/mgt-modal-6.jpg',
+            images: ['resources/images/mgt-modal-6.jpg', 'resources/images/mgt-modal-6-2.jpg', 'resources/images/mgt-modal-6-3.jpg'], // Simulada
             stock: 'stock'
         },
         {
@@ -83,7 +90,7 @@
             brand: 'minigt',
             description: 'La obra de arte de Horacio Pagani. Cada curva de este Zonda F es una sinfonía de diseño italiano y poder. Una pieza central para cualquier colección.',
             price: 190.00,
-            image: 'resources/images/mgt-modal-2.jpg',
+            images: ['resources/images/mgt-modal-2.jpg', 'resources/images/mgt-modal-2-2.jpg', 'resources/images/mgt-modal-2-3.jpg'], // Simulada
             stock: 'none'
         },
         {
@@ -92,7 +99,7 @@
             brand: 'greenlight',
             description: '¡Autoridad en la carretera! Esta réplica de la Guardia Nacional de Greenlight captura la presencia imponente del Charger, lista para la acción.',
             price: 380.00,
-            image: 'resources/images/gl-modal-1.jpg',
+            images: ['resources/images/gl-modal-1.jpg', 'resources/images/gl-modal-1-2.jpg', 'resources/images/gl-modal-1-3.jpg'], // Simulada
             stock: 'stock'
         },
         {
@@ -101,7 +108,7 @@
             brand: 'greenlight',
             description: 'Velocidad pura de Indy. Siente la adrenalina de las 500 millas con esta réplica de competición, con todos los patrocinadores y detalles aerodinámicos.',
             price: 150.00,
-            image: 'resources/images/gl-modal-2.jpg',
+            images: ['resources/images/gl-modal-2.jpg', 'resources/images/gl-modal-2-2.jpg', 'resources/images/gl-modal-2-3.jpg'], // Simulada
             stock: 'last'
         },
         {
@@ -110,7 +117,7 @@
             brand: 'greenlight',
             description: 'Fuerza y deber. Esta Chevrolet Silverado de la Guardia Nacional por Greenlight es tan robusta como su contraparte real. Lista para cualquier terreno.',
             price: 400.00,
-            image: 'resources/images/gl-modal-3.jpg',
+            images: ['resources/images/gl-modal-3.jpg', 'resources/images/gl-modal-2-2.jpg', 'resources/images/gl-modal-2-3.jpg'], // Simulada
             stock: 'none'
         }
     ];
@@ -219,7 +226,7 @@
             // ¡NUEVO! La imagen y el título ahora son clicables para abrir el modal
             col.innerHTML = `
                 <div class="card h-100 product-card">
-                    <img src="${product.image}" class="card-img-top product-detail-trigger" alt="${product.name}" loading="lazy" data-id="${product.id}" style="cursor: pointer;">
+                    <img src="${product.images[0]}" class="card-img-top product-detail-trigger" alt="${product.name}" loading="lazy" data-id="${product.id}" style="cursor: pointer;">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title product-detail-trigger" data-id="${product.id}" style="cursor: pointer;">${product.name}</h5>
                         <p class="card-text small text-muted">${product.description.substring(0, 80)}...</p> 
@@ -392,13 +399,23 @@
                 id: product.id, 
                 name: product.name, 
                 price: product.price, 
-                image: product.image,
+                image: product.images[0], // Usar la primera imagen para el carrito
                 qty: 1 
             });
         }
         
         saveCart(cart);
         showToast(`'${product.name}' fue añadido al carrito.`, 'success');
+
+        // ¡NUEVO! Animación del carrito (Propuesta 3)
+        const cartBtn = document.getElementById('openCartBtn');
+        if (cartBtn) {
+            cartBtn.classList.add('cart-pop-animation');
+            // Quitar la clase después de la animación para que pueda repetirse
+            setTimeout(() => {
+                cartBtn.classList.remove('cart-pop-animation');
+            }, 500); // Debe coincidir con la duración de la animación en CSS
+        }
     }
 
     function removeFromCart(id) {
@@ -515,7 +532,7 @@
     }
 
     // -----------------------------------------------------------------
-    // MANEJO DE FORMULARIOS
+    // ¡NUEVO! LÓGICA PARA MODAL DE DETALLE DE PRODUCTO (NIVEL DIOS)
     // -----------------------------------------------------------------
     
     function setupFormListeners() {
@@ -570,10 +587,52 @@
 
         modalTitle.textContent = product.name;
 
+        // --- 1. Construir la Mini-Galería ---
+        let thumbnailsHTML = '';
+        product.images.forEach((imgSrc, index) => {
+            thumbnailsHTML += `
+                <img src="${imgSrc}" 
+                     class="gallery-thumb ${index === 0 ? 'active' : ''}" 
+                     data-img-src="${imgSrc}" 
+                     alt="Thumbnail ${index + 1}">
+            `;
+        });
+
+        // --- 2. Construir Productos Relacionados ---
+        const relatedProducts = getProducts()
+            .filter(p => p.brand === product.brand && p.id !== product.id) // Misma marca, no el mismo producto
+            .slice(0, 3); // Limitar a 3
+
+        let relatedHTML = '';
+        if (relatedProducts.length > 0) {
+            relatedHTML = '<hr><h5 class="related-products-title">También te podría gustar...</h5><div class="row g-3">';
+            
+            relatedProducts.forEach(relProduct => {
+                relatedHTML += `
+                    <div class="col-4">
+                        <div class="card related-product-card product-detail-trigger" data-id="${relProduct.id}" style="cursor: pointer;">
+                            <img src="${relProduct.images[0]}" class="card-img-top" alt="${relProduct.name}">
+                            <div class="card-body">
+                                <h6 class="card-title">${relProduct.name}</h6>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            relatedHTML += '</div>';
+        }
+
+        // --- 3. Construir HTML Final del Modal ---
         modalBody.innerHTML = `
             <div class="row">
                 <div class="col-md-6">
-                    <img src="${product.image}" class="img-fluid rounded product-detail-image" alt="${product.name}">
+                    <!-- Galería Principal -->
+                    <div class="product-detail-gallery">
+                        <img src="${product.images[0]}" class="img-fluid rounded product-detail-image" alt="${product.name}" id="mainGalleryImage">
+                        <div class="gallery-thumbnails mt-2">
+                            ${thumbnailsHTML}
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <p>${product.description}</p> 
@@ -584,6 +643,7 @@
                     <p class="small text-muted">Marca: ${product.brand}</p>
                 </div>
             </div>
+            ${relatedHTML}
         `;
 
         modalFooter.innerHTML = `
@@ -685,9 +745,22 @@
             }
 
             // ¡NUEVO! Clic en tarjeta de producto para abrir modal
-            if (target.classList.contains('product-detail-trigger')) {
-                const productId = target.dataset.id;
+            // CORRECCIÓN: Asegurarse de que el listener del modal de producto no interfiera
+            const productTrigger = target.closest('.product-detail-trigger');
+            if (productTrigger) {
+                const productId = productTrigger.dataset.id;
                 openProductDetailModal(productId);
+            }
+
+            // ¡NUEVO! Clic en thumbnail de la galería
+            if (target.classList.contains('gallery-thumb')) {
+                const mainImage = document.getElementById('mainGalleryImage');
+                if (mainImage) {
+                    mainImage.src = target.dataset.imgSrc;
+                }
+                // Actualizar clase activa
+                document.querySelectorAll('.gallery-thumb').forEach(thumb => thumb.classList.remove('active'));
+                target.classList.add('active');
             }
         });
 

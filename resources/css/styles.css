@@ -242,6 +242,20 @@ footer a:hover {
     100% { background-position: 0% 50%; }
 }
 
+/* ¡NUEVO! Keyframes para la animación del carrito */
+@keyframes cartPop {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.2); }
+    60% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+/* ¡NUEVO! Clase para aplicar la animación al botón del carrito */
+.cart-pop-animation {
+    animation: cartPop 0.5s ease;
+}
+
+
 /* Animación de entrada (Fade In) */
 .fade-in-section {
     opacity: 0;
@@ -396,4 +410,68 @@ p.lead { color: #333; }
 /* Contenedor de Toasts */
 #toastContainer {
     z-index: 1100; /* Asegura que esté sobre los modales (1050) */
+}
+
+/* ¡NUEVO! Estilos para el modal de detalle de producto (Nivel DIOS) */
+.product-detail-image {
+    width: 100%;
+    height: 400px; /* Altura aumentada para la imagen principal */
+    object-fit: contain; 
+    background-color: #f5f5f6; 
+    border-radius: var(--radius);
+    margin-bottom: 0.5rem;
+}
+
+.gallery-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.gallery-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.gallery-thumb:hover,
+.gallery-thumb.active {
+    border-color: var(--primary);
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.related-products-title {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.related-product-card {
+    border: 1px solid #eee;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+.related-product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.related-product-card .card-img-top {
+    height: 80px;
+    object-fit: cover;
+}
+.related-product-card .card-body {
+    padding: 0.75rem;
+}
+.related-product-card .card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0;
 }
